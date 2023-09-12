@@ -66,6 +66,7 @@
       <DependentUpon>AccountingModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
+    <Compile Include="Context\UnitOfWork.cs" />
     <Compile Include="Customers.cs">
       <DependentUpon>AccountingModel.tt</DependentUpon>
     </Compile>
