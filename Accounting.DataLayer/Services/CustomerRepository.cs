@@ -85,5 +85,10 @@ namespace Accounting.DataLayer.Services
             db.SaveChanges();
         }
 
+        public IEnumerable<Customers> GetCustomersByFilter(string parameter)
+        {
+            return db.Customers.Where(n=>
+            n.FullName.Contains(parameter) || n.Email.Contains(parameter) || n.Mobile.Contains(parameter)).ToList();
+        }
     }
 }
