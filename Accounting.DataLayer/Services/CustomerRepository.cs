@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Accounting.DataLayer.Repositories;
+using Accounting.ViewModels.Customers;
 using System.Data.Entity;
 namespace Accounting.DataLayer.Services
+
 {
     public class CustomerRepository : ICustomerRepository
     {
@@ -89,6 +91,30 @@ namespace Accounting.DataLayer.Services
         {
             return db.Customers.Where(n=>
             n.FullName.Contains(parameter) || n.Email.Contains(parameter) || n.Mobile.Contains(parameter)).ToList();
+        }
+
+
+        public List<ListCustomerViewModel> GetnameCustomers(string filter = "")
+        {
+            if (filter == null)
+            {
+                return db.Customers.Select(c => new ListCustomerViewModel()
+                {
+                    FullName = c.FullName
+                }).ToList();
+            }
+            else
+            {
+                return db.Customers.Where(c => c.FullName.Contains(filter)).Select(c => new ListCustomerViewModel()
+                {
+                    FullName = c.FullName
+                }).ToList();
+            }
+        }
+
+        public int GetCustomerIdByName(string name)
+        {
+            return db.Customers.First(c=> c.FullName == name).CustomerID;
         }
     }
 }

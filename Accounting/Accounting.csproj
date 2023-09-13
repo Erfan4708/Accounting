@@ -70,6 +70,12 @@
     <Compile Include="Forms\frmCustomers.Designer.cs">
       <DependentUpon>frmCustomers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmNewAccounting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmNewAccounting.Designer.cs">
+      <DependentUpon>frmNewAccounting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validator\BaseValidator.cs">
@@ -110,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCustomers.resx">
       <DependentUpon>frmCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmNewAccounting.resx">
+      <DependentUpon>frmNewAccounting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -201,6 +210,10 @@
     <ProjectReference Include="..\Accounting.DataLayer\Accounting.DataLayer.csproj">
       <Project>{cbf8c7f8-ff9c-4d76-a652-3fa023aa4890}</Project>
       <Name>Accounting.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Accounting.ViewModels\Accounting.ViewModels.csproj">
+      <Project>{5ee001b2-0744-41e0-b325-b06083ca0074}</Project>
+      <Name>Accounting.ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
