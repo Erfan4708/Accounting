@@ -32,21 +32,29 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.btnEditLogin = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnCustomers = new System.Windows.Forms.ToolStripButton();
             this.btnNewAccounting = new System.Windows.Forms.ToolStripButton();
             this.btnReportPay = new System.Windows.Forms.ToolStripButton();
-            this.btnReportRecive = new System.Windows.Forms.ToolStripButton();
+            this.btnReportReceive = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblDate = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btnEditLogin = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblAccountReceive = new System.Windows.Forms.Label();
+            this.lblAccountPay = new System.Windows.Forms.Label();
+            this.lblAccountBalance = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -69,6 +77,13 @@
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
             this.toolStripDropDownButton1.Size = new System.Drawing.Size(69, 23);
             this.toolStripDropDownButton1.Text = "تنظیمات";
+            // 
+            // btnEditLogin
+            // 
+            this.btnEditLogin.Name = "btnEditLogin";
+            this.btnEditLogin.Size = new System.Drawing.Size(180, 24);
+            this.btnEditLogin.Text = "تنظیمات ورود";
+            this.btnEditLogin.Click += new System.EventHandler(this.btnEditLogin_Click);
             // 
             // toolStrip1
             // 
@@ -116,17 +131,17 @@
             this.btnReportPay.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnReportPay.Click += new System.EventHandler(this.btnReportPay_Click);
             // 
-            // btnReportRecive
+            // btnReportReceive
             // 
-            this.btnReportRecive.Font = new System.Drawing.Font("IRANSans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReportRecive.Image = global::Accounting.Properties.Resources._1370791030_credit_card;
-            this.btnReportRecive.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnReportRecive.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnReportRecive.Name = "btnReportRecive";
-            this.btnReportRecive.Size = new System.Drawing.Size(99, 62);
-            this.btnReportRecive.Text = "گزارش دریافتی ها";
-            this.btnReportRecive.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnReportRecive.Click += new System.EventHandler(this.btnReportRecive_Click);
+            this.btnReportReceive.Font = new System.Drawing.Font("IRANSans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportReceive.Image = global::Accounting.Properties.Resources._1370791030_credit_card;
+            this.btnReportReceive.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnReportReceive.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReportReceive.Name = "btnReportReceive";
+            this.btnReportReceive.Size = new System.Drawing.Size(99, 62);
+            this.btnReportReceive.Text = "گزارش دریافتی ها";
+            this.btnReportReceive.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnReportReceive.Click += new System.EventHandler(this.btnReportReceive_Click);
             // 
             // toolStrip2
             // 
@@ -134,7 +149,7 @@
             this.btnCustomers,
             this.btnNewAccounting,
             this.btnReportPay,
-            this.btnReportRecive});
+            this.btnReportReceive});
             this.toolStrip2.Location = new System.Drawing.Point(0, 26);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(784, 65);
@@ -170,12 +185,71 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // btnEditLogin
+            // groupBox1
             // 
-            this.btnEditLogin.Name = "btnEditLogin";
-            this.btnEditLogin.Size = new System.Drawing.Size(180, 24);
-            this.btnEditLogin.Text = "تنظیمات ورود";
-            this.btnEditLogin.Click += new System.EventHandler(this.btnEditLogin_Click);
+            this.groupBox1.Controls.Add(this.lblAccountBalance);
+            this.groupBox1.Controls.Add(this.lblAccountPay);
+            this.groupBox1.Controls.Add(this.lblAccountReceive);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(424, 118);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(348, 138);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "گزارش این ماه";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(275, 36);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 18);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "دریافتی ها :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(275, 67);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 18);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "پرداختی ها :";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(275, 97);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(40, 18);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "مانده :";
+            // 
+            // lblAccountReceive
+            // 
+            this.lblAccountReceive.Location = new System.Drawing.Point(23, 36);
+            this.lblAccountReceive.Name = "lblAccountReceive";
+            this.lblAccountReceive.Size = new System.Drawing.Size(246, 18);
+            this.lblAccountReceive.TabIndex = 3;
+            this.lblAccountReceive.Text = "0";
+            // 
+            // lblAccountPay
+            // 
+            this.lblAccountPay.Location = new System.Drawing.Point(23, 67);
+            this.lblAccountPay.Name = "lblAccountPay";
+            this.lblAccountPay.Size = new System.Drawing.Size(246, 18);
+            this.lblAccountPay.TabIndex = 4;
+            this.lblAccountPay.Text = "0";
+            // 
+            // lblAccountBalance
+            // 
+            this.lblAccountBalance.Location = new System.Drawing.Point(23, 97);
+            this.lblAccountBalance.Name = "lblAccountBalance";
+            this.lblAccountBalance.Size = new System.Drawing.Size(246, 18);
+            this.lblAccountBalance.TabIndex = 5;
+            this.lblAccountBalance.Text = "0";
             // 
             // Form1
             // 
@@ -183,6 +257,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.toolStrip2);
@@ -201,6 +276,8 @@
             this.toolStrip2.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -213,13 +290,20 @@
         private System.Windows.Forms.ToolStripButton btnCustomers;
         private System.Windows.Forms.ToolStripButton btnNewAccounting;
         private System.Windows.Forms.ToolStripButton btnReportPay;
-        private System.Windows.Forms.ToolStripButton btnReportRecive;
+        private System.Windows.Forms.ToolStripButton btnReportReceive;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lblDate;
         private System.Windows.Forms.ToolStripStatusLabel lblTime;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripMenuItem btnEditLogin;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblAccountBalance;
+        private System.Windows.Forms.Label lblAccountPay;
+        private System.Windows.Forms.Label lblAccountReceive;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }
 

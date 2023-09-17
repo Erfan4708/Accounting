@@ -1,5 +1,6 @@
 ﻿using Accounting.Forms;
 using Accounting.Utility;
+using Accounting.ViewModels.Accounting;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Accounting.Business;
 
 
 namespace Accounting
@@ -26,11 +28,6 @@ namespace Accounting
             frm.ShowDialog();
         }
 
-        private void btnNewAccounting_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnNewAccounting_Click_1(object sender, EventArgs e)
         {
             frmNewAccounting frmNewAccounting = new frmNewAccounting();
@@ -44,7 +41,7 @@ namespace Accounting
             frmReport.ShowDialog();
         }
 
-        private void btnReportRecive_Click(object sender, EventArgs e)
+        private void btnReportReceive_Click(object sender, EventArgs e)
         {
             frmReport frmReport = new frmReport();
             frmReport.TypeID = 1;
@@ -53,7 +50,6 @@ namespace Accounting
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
             this.Hide();
             frmLogin frmLogin = new frmLogin();
             if (frmLogin.ShowDialog() == DialogResult.OK) 
@@ -61,6 +57,7 @@ namespace Accounting
                 this.Show();
                 lblDate.Text = DateTime.Now.ToShamsi();
                 lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
+                Report();
             }
             else
             {
@@ -79,5 +76,14 @@ namespace Accounting
             frmLogin.Is_Edit = true;
             frmLogin.ShowDialog();
         }
+
+        void Report()
+        {
+            ReportViewModel report = Account.ReportFormMain();
+            lblAccountPay.Text = report.Pay.ToString("#,0");
+            lblAccountReceive.Text = report.Receive.ToString("#,0");
+            lblAccountBalance.Text = report.Balance.ToString("#,0");
+        }
     }
+
 }

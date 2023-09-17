@@ -37,7 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.rbRecive = new System.Windows.Forms.RadioButton();
+            this.rbReceive = new System.Windows.Forms.RadioButton();
             this.rbPay = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.txtAmount = new System.Windows.Forms.NumericUpDown();
@@ -118,16 +118,16 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "نوع تراکنش :";
             // 
-            // rbRecive
+            // rbReceive
             // 
-            this.rbRecive.AutoSize = true;
-            this.rbRecive.Location = new System.Drawing.Point(414, 45);
-            this.rbRecive.Name = "rbRecive";
-            this.rbRecive.Size = new System.Drawing.Size(61, 22);
-            this.rbRecive.TabIndex = 4;
-            this.rbRecive.TabStop = true;
-            this.rbRecive.Text = "دریافت";
-            this.rbRecive.UseVisualStyleBackColor = true;
+            this.rbReceive.AutoSize = true;
+            this.rbReceive.Location = new System.Drawing.Point(414, 45);
+            this.rbReceive.Name = "rbReceive";
+            this.rbReceive.Size = new System.Drawing.Size(61, 22);
+            this.rbReceive.TabIndex = 4;
+            this.rbReceive.TabStop = true;
+            this.rbReceive.Text = "دریافت";
+            this.rbReceive.UseVisualStyleBackColor = true;
             // 
             // rbPay
             // 
@@ -216,7 +216,7 @@
             this.Controls.Add(this.txtAmount);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.rbPay);
-            this.Controls.Add(this.rbRecive);
+            this.Controls.Add(this.rbReceive);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label1);
@@ -247,7 +247,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RadioButton rbRecive;
+        private System.Windows.Forms.RadioButton rbReceive;
         private System.Windows.Forms.RadioButton rbPay;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown txtAmount;

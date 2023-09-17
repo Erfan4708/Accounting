@@ -34,7 +34,7 @@ namespace Accounting.Forms
                     
                     if (Accounting.TypeID == 1)
                     {
-                        rbRecive.Checked = true;
+                        rbReceive.Checked = true;
 
                     }
                     else
@@ -76,7 +76,7 @@ namespace Accounting.Forms
         {
             if (BaseValidator.IsFormValid(this.components))
             {
-                if (rbRecive.Checked || rbPay.Checked)
+                if (rbReceive.Checked || rbPay.Checked)
                 {
                     using (UnitOfWork db = new UnitOfWork())
                     {
@@ -84,7 +84,7 @@ namespace Accounting.Forms
                         {
                             Amount = Convert.ToInt32(txtAmount.Value.ToString()),
                             CustomerID = db.CustomerRepository.GetCustomerIdByName(txtName.Text), 
-                            TypeID = (rbRecive.Checked)?1:2,
+                            TypeID = (rbReceive.Checked)?1:2,
                             DateTime = DateTime.Now,
                             Description = txtDescription.Text,
                     };
