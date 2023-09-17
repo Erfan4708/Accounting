@@ -82,6 +82,10 @@ namespace Accounting
             using(UnitOfWork db = new UnitOfWork())
             {
                 List<DataLayer.Accounting> result = new List<DataLayer.Accounting>();
+                DateTime? startDate;
+                DateTime? endDate;
+
+
                 int CustomerID = int.Parse(cbCustomer.SelectedValue.ToString());
                 if (CustomerID != 0)
                 {
@@ -90,6 +94,19 @@ namespace Accounting
                 else
                 {
                     result.AddRange(db.AccountingRepository.Get(n => n.TypeID == TypeID));
+                }
+                if (txtFromDate.Text != "    /  /")
+                {
+                    startDate = Convert.ToDateTime(txtFromDate.Text);
+                    startDate = DateConvertor.ToMiladi(startDate.Value);
+                    result = result.Where(r => r.DateTime >= startDate.Value).ToList();
+                }
+                if (txtToDate.Text != "    /  /")
+                {
+                    endDate = Convert.ToDateTime(txtToDate.Text);
+                    endDate = DateConvertor.ToMiladi(endDate.Value);
+                    result = result.Where(r => r.DateTime <= endDate.Value).ToList();
+
                 }
                 dgReport.Rows.Clear();
                 foreach (var row in result)
