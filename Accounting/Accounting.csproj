@@ -76,6 +76,12 @@
     <Compile Include="Forms\frmNewAccounting.Designer.cs">
       <DependentUpon>frmNewAccounting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Accounting\frmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounting\frmReport.Designer.cs">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validator\BaseValidator.cs">
@@ -108,6 +114,9 @@
     <Compile Include="Validator\RequiredFieldValidator.designer.cs">
       <DependentUpon>RequiredFieldValidator.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Accounting\frmReport.resx">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -210,6 +219,10 @@
     <ProjectReference Include="..\Accounting.DataLayer\Accounting.DataLayer.csproj">
       <Project>{cbf8c7f8-ff9c-4d76-a652-3fa023aa4890}</Project>
       <Name>Accounting.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Accounting.Utility\Accounting.Utility.csproj">
+      <Project>{97043c0b-d60e-4f5c-bf69-2bf07ae6946a}</Project>
+      <Name>Accounting.Utility</Name>
     </ProjectReference>
     <ProjectReference Include="..\Accounting.ViewModels\Accounting.ViewModels.csproj">
       <Project>{5ee001b2-0744-41e0-b325-b06083ca0074}</Project>

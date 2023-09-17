@@ -1,4 +1,5 @@
-﻿using Accounting.DataLayer.Context;
+﻿using Accounting.DataLayer;
+using Accounting.DataLayer.Context;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,9 +15,37 @@ namespace Accounting.Forms
 {
     public partial class frmNewAccounting : Form
     {
+        public int AccountingID = 0;
         public frmNewAccounting()
         {
             InitializeComponent();
+        }
+
+        void Edit()
+        {
+            if (AccountingID != 0)
+            {
+                using (UnitOfWork db = new UnitOfWork())
+                {
+
+                    this.Text = "ویرایش تراکنش";
+                    var Accounting = db.AccountingRepository.GetByID(AccountingID);
+                    txtName.Text = Accounting.Customers.FullName;
+                    
+                    if (Accounting.TypeID == 1)
+                    {
+                        rbRecive.Checked = true;
+
+                    }
+                    else
+                    {
+                        rbPay.Checked = true;
+                    }
+                    txtAmount.Text = Accounting.Amount.ToString();
+                    txtDescription.Text = Accounting.Description.ToString();
+
+                }
+            }
         }
 
         private void frmNewAccounting_Load(object sender, EventArgs e)
@@ -25,6 +54,7 @@ namespace Accounting.Forms
             {
                 dgvCustomers.AutoGenerateColumns = false;
                 dgvCustomers.DataSource = db.CustomerRepository.GetnameCustomers();
+                Edit();
             }
         }
 
@@ -46,7 +76,7 @@ namespace Accounting.Forms
         {
             if (BaseValidator.IsFormValid(this.components))
             {
-                if (!rbRecive.Checked || rbPay.Checked)
+                if (rbRecive.Checked || rbPay.Checked)
                 {
                     using (UnitOfWork db = new UnitOfWork())
                     {
@@ -58,7 +88,16 @@ namespace Accounting.Forms
                             DateTime = DateTime.Now,
                             Description = txtDescription.Text,
                     };
-                        db.AccountingRepository.insert(accounting);
+                        if (AccountingID == 0)
+                        {
+                            db.AccountingRepository.insert(accounting);
+                        }
+                        else
+                        {
+                            accounting.ID = AccountingID;
+                            db.AccountingRepository.Update(accounting);
+                        }
+
                         db.Save();
                         DialogResult = DialogResult.OK;
                     }

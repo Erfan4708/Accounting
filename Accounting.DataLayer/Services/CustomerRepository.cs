@@ -100,6 +100,7 @@ namespace Accounting.DataLayer.Services
             {
                 return db.Customers.Select(c => new ListCustomerViewModel()
                 {
+                    CustomerID = c.CustomerID,
                     FullName = c.FullName
                 }).ToList();
             }
@@ -107,6 +108,7 @@ namespace Accounting.DataLayer.Services
             {
                 return db.Customers.Where(c => c.FullName.Contains(filter)).Select(c => new ListCustomerViewModel()
                 {
+                    CustomerID = c.CustomerID,
                     FullName = c.FullName
                 }).ToList();
             }
