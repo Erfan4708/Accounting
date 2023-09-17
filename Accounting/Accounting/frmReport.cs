@@ -51,8 +51,26 @@ namespace Accounting
             }
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
+        private void btnPrint_Click(object sender, EventArgs e)
         {
+            DataTable dtPrint = new DataTable();
+            dtPrint.Columns.Add("Customer");
+            dtPrint.Columns.Add("Amount");
+            dtPrint.Columns.Add("Date");
+            dtPrint.Columns.Add("Description");
+
+            foreach (DataGridViewRow item in dgReport.Rows)
+            {
+                dtPrint.Rows.Add(
+                item.Cells[0].Value.ToString(),
+                item.Cells[1].Value.ToString(),
+                item.Cells[2].Value.ToString(),
+                item.Cells[3].Value.ToString()
+                );
+            }
+            stiPrint.Load(Application.StartupPath + "/Report.mrt");
+            stiPrint.RegData("DT", dtPrint);
+            stiPrint.Print();
 
         }
 
@@ -84,7 +102,7 @@ namespace Accounting
                 List<DataLayer.Accounting> result = new List<DataLayer.Accounting>();
                 DateTime? startDate;
                 DateTime? endDate;
-
+                 
 
                 int CustomerID = int.Parse(cbCustomer.SelectedValue.ToString());
                 if (CustomerID != 0)
@@ -115,7 +133,6 @@ namespace Accounting
                     dgReport.Rows.Add(row.ID, FullName, row.Amount, row.DateTime.ToShamsi(), row.Description);
                     
                 }
-                
             }
         }
 
